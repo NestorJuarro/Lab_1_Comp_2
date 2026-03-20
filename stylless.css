@@ -1,0 +1,121 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.app {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.dark {
+  background: #1e1e2f;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #4facfe;
+  color: white;
+}
+
+.buscador {
+  margin: 10px 0;
+}
+
+.filtros {
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.filtros button {
+  flex: 1;
+  background: #ddd;
+  color: black;
+}
+
+.filtros .activo {
+  background: #4facfe;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #f1f1f1;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dark li {
+  background: #2c2c3c;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.acciones button {
+  margin-left: 5px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+}
+
+/* Animaciones */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s;
+}
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}

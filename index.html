@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager PRO+</title>
+
+  <script src="https://unpkg.com/vue@3"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="stylless.css">
+</head>
+<body>
+
+<div id="app" :class="['app', darkMode ? 'dark' : '']">
+
+  <header>
+    <h1>🚀 Task Manager PRO+</h1>
+    <button @click="darkMode = !darkMode">
+      {{ darkMode ? '☀️' : '🌙' }}
+    </button>
+  </header>
+
+  <!-- INPUT -->
+  <div class="input-container">
+    <input type="text" v-model="nuevaTarea" placeholder="Nueva tarea...">
+    <button @click="agregarTarea">Agregar</button>
+  </div>
+
+  <p v-if="error" class="error">{{ error }}</p>
+
+  <!-- BUSCADOR -->
+  <input class="buscador" v-model="busqueda" placeholder="Buscar tarea...">
+
+  <!-- FILTROS -->
+  <div class="filtros">
+    <button @click="filtro='todas'" :class="{activo: filtro==='todas'}">Todas</button>
+    <button @click="filtro='pendientes'" :class="{activo: filtro==='pendientes'}">Pendientes</button>
+    <button @click="filtro='completadas'" :class="{activo: filtro==='completadas'}">Completadas</button>
+  </div>
+
+  <!-- LISTA -->
+  <transition-group name="fade" tag="ul">
+    <li v-for="(tarea, index) in tareasFiltradas" :key="tarea.id">
+
+      <input type="checkbox" v-model="tarea.completada">
+
+      <span v-if="!tarea.editando" :class="{done: tarea.completada}">
+        {{ tarea.texto }}
+      </span>
+
+      <input v-if="tarea.editando" v-model="tarea.texto">
+
+      <div class="acciones">
+        <button @click="editarTarea(tarea)">✏️</button>
+        <button @click="eliminarTarea(index)">🗑</button>
+      </div>
+
+    </li>
+  </transition-group>
+
+  <!-- INFO -->
+  <div class="info">
+    <p>Total: {{ tareas.length }}</p>
+    <p>Completadas: {{ completadas }}</p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
